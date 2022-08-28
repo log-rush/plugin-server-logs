@@ -7,6 +7,8 @@ github.com/klauspost/compress v1.15.1 h1:y9FcTHGyrebwfP0ZZqFiaxTaiDnUrGkJkI+f583
 github.com/klauspost/compress v1.15.1/go.mod h1:/3/Vjq9QcHkK5uEr5lBEmyoZ1iFhe47etQ6QUkpK6sk=
 github.com/log-rush/distribution-server v0.2.0 h1:rDjooET4bz2CxXmwJofwNBq+WbcT9hUXc/uolojuwdk=
 github.com/log-rush/distribution-server v0.2.0/go.mod h1:8KGV3ds6WHj+lKhyf7l1jX6GiREauO+lZ7TuHaIBCVc=
+github.com/log-rush/distribution-server v0.2.1 h1:fzvb/cTsopo7V9OuIJ1P7jVy0NwoAQvnFvrd113W0FE=
+github.com/log-rush/distribution-server v0.2.1/go.mod h1:7x6NAygKIVHha6UNo3UpOpO0XHW6UAjuq1lX3bEzaiM=
 github.com/log-rush/go-client v0.1.0 h1:MBWEqYl/ZcIViAyAxVMVRpSJIxRxnczL90rcFyOs8ro=
 github.com/log-rush/go-client v0.1.0/go.mod h1:RciGM8rcq6jyQeflvhV1RWBatexG7X8BCMu7JgA4utg=
 github.com/valyala/bytebufferpool v1.0.0 h1:GqA5TC/0021Y/b9FG4Oi9Mr3q7XYx6KllzawFIhcdPw=

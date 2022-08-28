@@ -2,6 +2,7 @@ package pluginServerLogs
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/log-rush/distribution-server/domain"
 	"github.com/log-rush/distribution-server/pkg/app"
@@ -29,19 +30,27 @@ func NewServerLogsPlugin(config Config) ServerLogsPlugin {
 
 	p := devkit.NewPlugin(
 		"server-logs",
-		nil,
-		nil,
-		func(context *app.Context) domain.Logger {
-			batchSize := config.BatchSize
-			if batchSize < 20 {
-				batchSize = 20
-			}
-			plugin.stream = logging.NewLogStream(logging.ClientOptions{
-				DataSourceUrl: fmt.Sprintf("http://%s:%d/", context.Config.Host, context.Config.Port),
-				BatchSize:     batchSize,
-			}, config.StreamName, config.Id, config.Key)
+		devkit.PluginHandlers{
+			LoggerHandler: func(context *app.Context) domain.Logger {
+				batchSize := config.BatchSize
+				if batchSize < 20 {
+					batchSize = 20
+				}
+				plugin.stream = logging.NewLogStream(logging.ClientOptions{
+					DataSourceUrl: fmt.Sprintf("http://%s:%d/", context.Config.Host, context.Config.Port),
+					BatchSize:     batchSize,
+				}, config.StreamName, config.Id, config.Key)
 
-			return devkit.NewLogger(plugin.HandleLog)
+				return devkit.NewLogger(plugin.HandleLog)
+			},
+		},
+		devkit.PluginHooks{
+			OnAfterServe: func(context *app.Context) {
+				go func() {
+					<-time.After(time.Second * 1)
+					plugin.stream.Register()
+				}()
+			},
 		},
 	)
 	plugin.Plugin = p

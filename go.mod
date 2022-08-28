@@ -3,7 +3,7 @@ module github.com/log-rush/plugin-server-logs
 go 1.18
 
 require (
-	github.com/log-rush/distribution-server v0.2.0
+	github.com/log-rush/distribution-server v0.2.1
 	github.com/log-rush/go-client v0.1.0
 )
 
